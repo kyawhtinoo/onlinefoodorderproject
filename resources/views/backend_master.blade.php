@@ -145,8 +145,10 @@
         </li>
         <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Docs</span></a></li> --}}
         
-       {{--  <li><a class="app-menu__item {{ Request::is('weights*') ? 'active' : '' }}" href="{{route('weights.index')}}"><i class="app-menu__icon fa fa-balance-scale"></i><span class="app-menu__label">Weights</span></a></li>
- --}}
+        <li><a class="app-menu__item {{ Request::is('restaurants*') ? 'active' : '' }}" href="{{route('restaurants.index')}}"><i class="app-menu__icon fa fa-balance-scale"></i><span class="app-menu__label">Restaurants</span></a></li>
+
+         <li><a class="app-menu__item {{ Request::is('items*') ? 'active' : '' }}" href="{{route('items.index')}}"><i class="app-menu__icon fa fa-balance-scale"></i><span class="app-menu__label">Items</span></a></li>
+
 
        
       </ul>

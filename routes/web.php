@@ -21,3 +21,5 @@ Route::get('/','FrontendController@index')->name('index');
 Route::get('shoppingcart','FrontendController@shoppingcart')->name('shoppingcart');
 Route::get('restaurantdetail','FrontendController@restaurantdetail')->name('restaurantdetail');
 Route::get('dashboard','BackendController@dashboard')->name('dashboard');
+Route::resource('restaurants','RestaurantController');
+Route::resource('items','ItemController');

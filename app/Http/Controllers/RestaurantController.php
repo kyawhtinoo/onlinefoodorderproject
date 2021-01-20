@@ -13,8 +13,9 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $restaurants=Restaurant::all();
+        return view('backend.restaurants.index',compact('restaurants'));
     }
 
     /**
@@ -24,7 +25,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.restaurants.create');
     }
 
     /**
@@ -35,7 +36,25 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'photo'=>'required|mimes:jpg,jpeg,png',
+            'type'=>'required',
+        ]);
+
+         if ($request->file()) {
+           $fileName=time().'_'.$request->photo->getClientOriginalName();
+
+           $filePath=$request->file('photo')->storeAs('restaurantimg',$fileName,'public');
+           $path = '/storage/'.$filePath;
+       }
+
+       $restaurant=new Restaurant;
+       $restaurant->name=$request->name;
+       $restaurant->photo=$path;
+       $restaurant->type=$request->type;
+       $restaurant->save();
+       return redirect()->route('restaurants.index');
     }
 
     /**
@@ -57,7 +76,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+         return view('backend.restaurants.edit',compact('restaurant'));
     }
 
     /**
@@ -69,7 +88,26 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+         $request->validate([
+            'name'=>'required',
+            'photo'=>'sometimes|mimes:jpg,jpeg,png',
+            'type'=>'required',
+        ]);
+
+         if ($request->file()) {
+           $fileName=time().'_'.$request->photo->getClientOriginalName();
+
+           $filePath=$request->file('photo')->storeAs('restaurantimg',$fileName,'public');
+           $path = '/storage/'.$filePath;
+           $restaurant->photo=$path;
+       }
+
+      
+       $restaurant->name=$request->name;
+      
+       $restaurant->type=$request->type;
+       $restaurant->save();
+       return redirect()->route('restaurants.index');
     }
 
     /**
@@ -80,6 +118,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->route('restaurants.index');
+
     }
 }
