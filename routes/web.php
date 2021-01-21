@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','FrontendController@index')->name('index');
 Route::get('shoppingcart','FrontendController@shoppingcart')->name('shoppingcart');
-Route::get('restaurantdetail','FrontendController@restaurantdetail')->name('restaurantdetail');
+Route::get('restaurantdetail/{id}','FrontendController@restaurantdetail')->name('restaurantdetail');
 
 Route::middleware('role:admin')->group(function(){
 Route::get('dashboard','BackendController@dashboard')->name('dashboard');

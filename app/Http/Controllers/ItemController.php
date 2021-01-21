@@ -16,7 +16,8 @@ class ItemController extends Controller
     public function index()
     {
         $items=Item::all();
-        return view('backend.items.index',compact('items'));
+        $restaurants=Restaurant::all();
+        return view('backend.items.index',compact('items','restaurants'));
     }
 
     /**

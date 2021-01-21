@@ -18,7 +18,43 @@
               <li class="nav-item active"><a href="#" class="nav-link text-white">Home</a></li>
               <li class="nav-item"><a href="#" class="nav-link text-white">About</a></li>
               <li class="nav-item"><a href="#" class="nav-link text-white">Contact</a></li>
-            </ul>
+           
+
+             @guest
+                            <li class="nav-item navbar-nav">
+                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login|') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item navbar-nav">
+                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown navbar-nav">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a href="#" class="dropdown-item">Order History</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+
+          {{--  
+          </div> --}}
+        </div>
+      </div>
+       </ul>
 
         <a href="{{route('shoppingcart')}}" class="text-decoration-none d-xl-inline d-lg-inline d-md-inline d-sm-none d-none shoppingcartLink"> 
          <i class="fas fa-shopping-cart"></i> 
@@ -30,6 +66,8 @@
   @yield('banner')
     
   @yield('content')
+
+ @yield('more')
 
    <div class="container-fluid pt-4 mt-5" style="background-color: #FF5733">
 
@@ -46,6 +84,7 @@
             </div>
         </div>
     </div>
+
 </body>
 <script type="text/javascript" src="{{asset('frontend_asset/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend_asset/js/bootstrap.bundle.min.js')}}"></script>

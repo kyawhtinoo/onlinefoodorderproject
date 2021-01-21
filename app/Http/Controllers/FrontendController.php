@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Restaurant;
+use App\Item;
 
 class FrontendController extends Controller
 {
    public function index($value='')
    {
-    return view('frontend.index');
+    $restaurants=Restaurant::orderby('id','desc')->get();
+    return view('frontend.index',compact('restaurants'));
    }
 
    public function shoppingcart($value='')
@@ -16,8 +19,9 @@ class FrontendController extends Controller
     return view('frontend.shoppingcart');
    }
 
-   public function restaurantdetail($value='')
+   public function restaurantdetail($id,$value='')
    {
-    return view('frontend.restaurantdetail');
+    $items=Item::where('restaurant_id',$id)->orderby('created_at','desc')->get();
+    return view('frontend.restaurantdetail',compact('items'));
    }
 }

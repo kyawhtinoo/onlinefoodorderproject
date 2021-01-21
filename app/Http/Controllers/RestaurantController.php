@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Restaurant;
 use Illuminate\Http\Request;
+use App\Item;
 
 class RestaurantController extends Controller
 {
@@ -15,7 +16,8 @@ class RestaurantController extends Controller
     public function index()
     {   
         $restaurants=Restaurant::all();
-        return view('backend.restaurants.index',compact('restaurants'));
+        $items=Item::all();
+        return view('backend.restaurants.index',compact('restaurants',compact('items')));
     }
 
     /**
