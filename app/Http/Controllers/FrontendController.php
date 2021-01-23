@@ -21,7 +21,15 @@ class FrontendController extends Controller
 
    public function restaurantdetail($id,$value='')
    {
+    $restaurants=Restaurant::where('id',$id)->get();
     $items=Item::where('restaurant_id',$id)->orderby('created_at','desc')->get();
-    return view('frontend.restaurantdetail',compact('items'));
+    return view('frontend.restaurantdetail',compact('items','restaurants'));
    }
+
+    public function customerlogin($value=''){
+      return view ('frontend.customerlogin');
+    }
+     public function customerregister($value=''){
+      return view ('frontend.customerregister');
+    }
 }

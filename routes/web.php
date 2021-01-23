@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','FrontendController@index')->name('index');
 Route::get('shoppingcart','FrontendController@shoppingcart')->name('shoppingcart');
 Route::get('restaurantdetail/{id}','FrontendController@restaurantdetail')->name('restaurantdetail');
+Route::resource('client', 'ClientController');
+Route::get('customerlogin', 'FrontendController@customerlogin')->name('customerloginpage');
+Route::get('customerregister', 'FrontendController@customerregister')->name('customerregisterpage');
 
 Route::middleware('role:admin')->group(function(){
 Route::get('dashboard','BackendController@dashboard')->name('dashboard');
@@ -30,3 +33,4 @@ Route::resource('items','ItemController');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+

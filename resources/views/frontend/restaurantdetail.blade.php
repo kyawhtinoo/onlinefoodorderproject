@@ -1,7 +1,27 @@
 @extends('frontend_master')
 @section('content')
-  <h1 class="text-center pt-5">Restaurant Name</h1>
+  @foreach($restaurants as $restaurant)
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <img src="{{$restaurant->photo}}"class="h-20">
+        <h2 style="padding-left: 100px; padding-top: 30px;">{{$restaurant->name}}</h2>
+        <p style="padding-left: 100px;" class="text-info">$$$ {{$restaurant->type}}</p>
+        <div class="star-rating" style="padding-left: 100px">
+                  <ul class="list-inline">
+                    <li class="list-inline-item px-1"><i class="fas fa-star text-warning"></i></li>
+                    <li class="list-inline-item px-1"><i class="fas fa-star text-warning"></i></li>
+                    <li class="list-inline-item px-1"><i class="fas fa-star text-warning"></i></li>
+                    <li class="list-inline-item px-1"><i class="fas fa-star text-warning"></i></li>
+                    <li class="list-inline-item px-1"><i class="fas fa-star-half-alt text-warning"></i></li>
+                  </ul>
+       </div>
+      </div>
+   </div>
+  </div>
+  @endforeach
   <div class="container mt-5">
+    <h3 class="pb-2">Main Menu</h3>
    <div class="row">
    	@foreach($items as $item)
     <div class="col-6 col-md-4 col-lg-4 mb-5">

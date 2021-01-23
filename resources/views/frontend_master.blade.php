@@ -22,11 +22,11 @@
 
              @guest
                             <li class="nav-item navbar-nav">
-                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login|') }}</a>
+                                <a class="nav-link text-white" href="{{ route('customerloginpage') }}">{{ __('Login|') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item navbar-nav">
-                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('customerregisterpage') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

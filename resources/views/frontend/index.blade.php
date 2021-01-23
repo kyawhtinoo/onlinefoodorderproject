@@ -1,7 +1,7 @@
 @extends('frontend_master')
 @section('banner')
     <div>
-       <img src="{{asset('frontend_asset/image/2.jpg')}}" width="100%" height="650px">
+       <img src="{{asset('https://food.bolt.eu/og-img.jpg')}}" width="100%" height="600px">
     </div>
 @endsection
 @section('content')
@@ -17,7 +17,7 @@
       <div class="card-body">
        <h5 class="card-title">{{$restaurant->name}}</h5>
        <p class="card-text">{{$restaurant->type}}</p>
-      <a href="{{route('restaurantdetail',$restaurant->id)}}" class="btn btn-outline-danger">Choose Menu</a>
+      <a href="{{route('restaurantdetail',$restaurant->id)}}" class="btn btn-outline-danger Choose_menu">Choose Menu</a>
       </div>
      </div>
     </div>
@@ -25,6 +25,7 @@
    </div>
   
   </div>
+  
 @endsection
 @section('more')
   <div class="container">
