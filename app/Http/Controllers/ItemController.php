@@ -15,7 +15,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items=Item::all();
+        $items=Item::orderby('id','desc')->get();
         $restaurants=Restaurant::all();
         return view('backend.items.index',compact('items','restaurants'));
     }
@@ -56,11 +56,11 @@ class ItemController extends Controller
            $path = '/storage/'.$filePath;
        }
 
-       if ($request->discount) {
-           $discount=$request->discount;
-       }else{
-           $discount=0;
-       }
+       // if ($request->discount) {
+       //     $discount=$request->discount;
+       // }else{
+       //     $discount=0;
+       // }
 
 
 
@@ -70,7 +70,7 @@ class ItemController extends Controller
         $item->name=$request->name;
         $item->photo=$path;
         $item->price=$request->price;
-        $item->discount=$discount;
+        // $item->discount=$discount;
         $item->description=$request->description;
         $item->restaurant_id = $request->restaurant;
         $item->save();

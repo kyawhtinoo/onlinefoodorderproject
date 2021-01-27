@@ -12,7 +12,7 @@ $(document).ready(function(){
          var name=$(this).data('name');
          var price=$(this).data('price');
          var photo=$(this).data('photo');
-         var discount=$(this).data('discount');
+         // var discount=$(this).data('discount');
 
 
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
      	price:price,
      	photo:photo,
      	qty:1,
-     	discount:discount,
+     	// discount:discount,
      };
    console.log(item);
      var jsondata=localStorage.getItem("itemlist");
@@ -73,15 +73,15 @@ $(document).ready(function(){
           var price = v.price;
           var photo = v.photo;          
           var qty = v.qty;          
-          var discount = v.discount;
+          // var discount = v.discount;
           var total=0;
-          if (discount>0) {
-            total+=discount*qty;
+          // if (discount>0) {
+          //   total+=discount*qty;
 
-          }else{
-            total+=price*qty;
-          }
-          
+          // }else{
+          //   total+=price*qty;
+          // }
+          total+=price*qty
 
           subtotal+=total;
 
@@ -112,15 +112,9 @@ $(document).ready(function(){
                                  <i class="fas fa-minus"></i>
                                </button>
                          </td>
-                         <td>`;if (discount>0) {
-                                 
-                              html+=` ${discount}<br>
-                             <del>${price}</del>`;
-                                  }else{
-                              html+=`${price}`
-                                   }
-                            
-                              html+=`</td>
+                         <td>
+                             ${price}
+                         </td>
                          <td>
                              ${total}
                          </td>

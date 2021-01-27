@@ -23,6 +23,9 @@ Route::get('restaurantdetail/{id}','FrontendController@restaurantdetail')->name(
 Route::resource('client', 'ClientController');
 Route::get('customerlogin', 'FrontendController@customerlogin')->name('customerloginpage');
 Route::get('customerregister', 'FrontendController@customerregister')->name('customerregisterpage');
+Route::get('orderhistory','FrontendController@orderhistory')->name('orderhistory');
+Route::get('orderdetail/{id}','FrontendController@orderdetail')->name('orderdetail');
+Route::resource('orders','OrderController');
 
 Route::middleware('role:admin')->group(function(){
 Route::get('dashboard','BackendController@dashboard')->name('dashboard');

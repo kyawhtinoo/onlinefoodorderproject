@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Item;
+use App\Order;
+use Auth;
+use Orderdetail;
+
 
 class FrontendController extends Controller
 {
@@ -32,4 +36,19 @@ class FrontendController extends Controller
      public function customerregister($value=''){
       return view ('frontend.customerregister');
     }
+
+     public function orderhistory($value='')
+   {
+    
+   $orders =Order::where('client_id',Auth::id())->orderBy('id','desc')->get();
+    return view('frontend.orderhistory',compact('orders',));
+   }
+   
+    public function orderdetail($id,$value='')
+   {
+    $order=Order::where('client_id',Auth::id())->orderBy('id','desc')->get();
+    // $orderdetail=Orderdetail::all();
+    $items=Item::all();
+    return view('frontend.orderdetail',compact('order','items'));
+   }
 }

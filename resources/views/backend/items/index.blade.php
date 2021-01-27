@@ -27,7 +27,7 @@
              <th>Name</th>
              <th>Photo</th>
              <th>Price</th>
-             <th>Discount</th>
+            {{--  <th>Discount</th> --}}
              <th>Description</th>
              <th>Restaurant</th>
              <th>Actions</th>
@@ -41,7 +41,7 @@
                <td>{{$item->name}}</td>
                <td><img src="{{asset($item->photo)}}" width="100"></td>
                <td>{{$item->price}}</td>
-               <td>{{$item->discount}}</td>
+              {{--  <td>{{$item->discount}}</td> --}}
                <td>{{$item->description}}</td>
                <td>{{$item->restaurant->name}}</td>
                <td>

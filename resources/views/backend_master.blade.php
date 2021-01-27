@@ -149,6 +149,8 @@
 
          <li><a class="app-menu__item {{ Request::is('items*') ? 'active' : '' }}" href="{{route('items.index')}}"><i class="app-menu__icon fa fa-balance-scale"></i><span class="app-menu__label">Items</span></a></li>
 
+          <li><a class="app-menu__item {{ Request::is('orders*') ? 'active' : '' }}" href="{{route('orders.index')}}"><i class="app-menu__icon fa fa-balance-scale"></i><span class="app-menu__label">Orders</span></a></li>
+
 
        
       </ul>

@@ -40,9 +40,12 @@
 							</td>
 						</tr>
 						<tr> 
+							<td colspan="5"> 
+								<textarea class="form-control" id="notes" placeholder="Any Request..."></textarea>
+							</td>
 							<td colspan="3">
                                 @guest
-								<a href="{{route('login')}}" class="btn  btn-secondary btn-block mainfullbtncolor">
+								<a href="{{route('customerloginpage')}}" class="btn  btn-secondary btn-block mainfullbtncolor">
 									Login to Check Out 
 								</a>
                                 @else
@@ -75,4 +78,47 @@
 		
 
 	</div>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Order Successful!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <a href="{{-- {{route('indexpage')}} --}}" class="btn btn-primary">OK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+@section('kho')
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		$.ajaxSetup({
+            headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               }
+           });
+        
+        $('.checkoutbtn').click(function(){
+        let ls    = localStorage.getItem("itemlist");
+        let lsArr =JSON.parse(ls);
+        console.log(lsArr);
+        let total =lsArr.reduce((acc,row)=>acc + (row.price*row.qty),0);
+        let notes = $('#notes').val();
+        $.post("{{route('orders.store')}}",{ls:ls,notes:notes,total:total},function (response) {
+           localStorage.clear();
+           $('#exampleModal').modal('show');
+        });
+      });
+
+  	});
+  </script>
 @endsection

@@ -15,7 +15,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {   
-        $restaurants=Restaurant::all();
+        $restaurants=Restaurant::orderby('id','desc')->get();
         $items=Item::all();
         return view('backend.restaurants.index',compact('restaurants',compact('items')));
     }

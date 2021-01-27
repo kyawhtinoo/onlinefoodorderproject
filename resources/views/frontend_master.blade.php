@@ -2,7 +2,11 @@
 <html>
 <head>
     <title></title>
-    <meta charset="utf-8">
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{asset('frontend_asset/css/style.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend_asset/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend_asset/fontawesome/css/all.min.css')}}">
@@ -15,9 +19,9 @@
 
           <div class="collapse navbar-collapse " id="Collapse">
             <ul class="navbar-nav ml-auto mr-5">
-              <li class="nav-item active"><a href="#" class="nav-link text-white">Home</a></li>
-              <li class="nav-item"><a href="#" class="nav-link text-white">About</a></li>
-              <li class="nav-item"><a href="#" class="nav-link text-white">Contact</a></li>
+              <li class="nav-item active"><a href="{{route('index')}}" class="nav-link text-white">Home</a></li>
+             {{--  <li class="nav-item"><a href="#" class="nav-link text-white">About</a></li>
+              <li class="nav-item"><a href="#" class="nav-link text-white">Contact</a></li> --}}
            
 
              @guest
@@ -36,7 +40,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a href="#" class="dropdown-item">Order History</a>
+                                  <a href="{{route('orderhistory')}}" class="dropdown-item">Order History</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -69,6 +73,7 @@
 
  @yield('more')
 
+
    <div class="container-fluid pt-4 mt-5" style="background-color: #FF5733">
 
         <div class="row">
@@ -89,4 +94,5 @@
 <script type="text/javascript" src="{{asset('frontend_asset/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend_asset/js/bootstrap.bundle.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend_asset/js/shoppingcart.js')}}"></script>
+@yield('kho')
 </html>

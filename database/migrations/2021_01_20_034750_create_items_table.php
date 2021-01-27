@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->text('photo');
             $table->integer('price');
-            $table->integer('discount');
+            // $table->integer('discount');
             $table->text('description');
             $table->unsignedBigInteger('restaurant_id');
              $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');

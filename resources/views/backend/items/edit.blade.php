@@ -61,14 +61,14 @@
               @enderror
             </div>
 
-            <div class="form-group">
+           {{--  <div class="form-group">
               <label for="discount">Discount</label>
               <input type="text" name="discount" id="discount" class="form-control @error('discount') is-invalid @enderror" value="{{$item->discount}}">
 
               @error('discount')
                <div class="alert alert-danger">{{ $message }}</div>
               @enderror
-            </div>
+            </div> --}}
 
             <div class="form-group">
               <label for="description">Description</label>

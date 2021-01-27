@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use App\Client;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -37,4 +38,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     public function client()
+    {
+        return $this->hasOne('App\Client');
+    }
+
+       public function orders()
+  {
+    return $this->hasMany('App\Order');
+  }
 }

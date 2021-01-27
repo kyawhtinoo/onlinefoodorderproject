@@ -29,7 +29,7 @@
        data-id="{{$item->id}}"
        data-name= "{{$item->name}}"
        data-price="{{$item->price}}" 
-       data-discount="{{$item->discount}}" 
+      {{--  data-discount="{{$item->discount}}"  --}}
        data-photo="{{$item->photo}}">
       <div class="card shadow">
    			<div class="row">
@@ -40,12 +40,13 @@
    					{{-- <div>Restaurant Name:{{$item->restaurant->name}}</div> --}}
             <div>{{$item->name}}</div>
    					<div>{{$item->description}}</div>
-   					@if($item->discount)
+   					{{-- @if($item->discount)
              MMK {{number_format($item->discount)}}
             <p class="text-black-50 d-inline-block"><strike>{{number_format($item->price)}}</strike>
             @elseif($item->discount==0)
              MMK {{number_format($item->price)}}  
-            @endif
+            @endif --}}
+            <div>MMK {{number_format($item->price)}}</div>
    				  </div>
           </div>
         </div>
